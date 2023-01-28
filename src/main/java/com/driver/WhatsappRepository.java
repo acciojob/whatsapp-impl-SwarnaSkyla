@@ -30,11 +30,11 @@ public class WhatsappRepository {
     }
     public String createUser(String username,String mobile) throws Exception{
 
-        if(userMap.containsKey(mobile)){
-            User newuser=new User(username,mobile);
+        if(!userMap.containsKey(mobile)){
+            userMap.put(username,new User(username,mobile));
             return "SUCCESS";
         }
-        throw new Exception();
+        throw new Exception("User already exists");
 
 
     }
